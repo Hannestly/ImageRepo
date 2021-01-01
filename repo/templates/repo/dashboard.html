@@ -1,0 +1,51 @@
+{% extends 'repo/main.html' %}
+{% load static %}
+{% block content %}
+<br>
+<div>
+    <h2>Search by Text</h2>
+    <form method="get">
+            <label for="{{myFilter.form.title_filter.id_for_label}}" >Title</label>
+            {{myFilter.form.title_filter}}
+            
+            <label for="{{myFilter.form.title_filter.tag_filter}}">Tag</label>
+            {{myFilter.form.tag_filter}}
+            
+            <label for="{{myFilter.form.desc_filter.tag_filter}}">Description</label>
+            {{myFilter.form.desc_filter}}
+            <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+</div>
+<hr>
+
+<div>
+    <h2>Search by Image</h2>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="searchImg"/>
+        <button class="btn btn-primary" type="submit" name="submit">Search</button>
+    </form>
+</div>
+
+<hr>
+
+<div class="row">
+    {% for image in images %}
+    <div class="card" style="width:300">
+        <!-- <img class="card-img-top" src="{% static 'images/apple/test_apple.jpg' %}" width='100' height='200' alt="Card image"> -->
+        <img class="card-img-top" src="{{ image.img_url }}" width='200' height='200' alt="image">
+        <div class="card-body">
+            <h2 class="card-title">{{image.title}}</h2>
+            <h5>{{image.tag}}</h5>
+            <p class="card-text">{{image.description}}</p>
+            <p>{{image.date_created}}</p>
+            <a href="{% url 'delete_image' image.id %}" class="btn btn-danger">Delete</a>
+            </div>
+    </div>
+    {% empty %}
+    <h1>No Result</h1>
+    {% endfor %}
+</div>
+
+
+{% endblock %}
