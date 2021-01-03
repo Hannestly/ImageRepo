@@ -33,17 +33,13 @@ def upload(request):
     if request.method == 'POST':
         upload_file = request.FILES['temp_image_upload']
         image_fs = FileSystemStorage(location='static/images/Upload')
-        temp_name = image_fs.save(upload_file.name, upload_file)
-        temp_image_path = image_fs.path(temp_name)
-        classification = classify(temp_image_path)
-        classified_destination = 'static/images/{}'.format(classification)
-        image_fs = FileSystemStorage(location=classified_destination)
-        final_name = image_fs.save(upload_file.name, upload_file)
-
-        # Adding tag and image path to POST request 
+        img_name = image_fs.save(upload_file.name, upload_file)
+        img_path = image_fs.path(img_name)
+        classification = classify(img_path)
+        
         post = request.POST.copy()
         post['tag'] = classification
-        post['image_path'] = image_fs.path(final_name)
+        post['image_path'] = image_fs.path(img_name)
         request.POST = post
     
         form = ImageForm(request.POST)
