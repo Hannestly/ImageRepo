@@ -2,11 +2,14 @@
 {% load static %}
 {% block content %}
 
-
-<h2>Are you sure you want to delete "{{item}}"?</h2>
-<form method="POST">
-    {% csrf_token %}
-    <a href="{% url 'dashboard' %}"> Cancel</a>
-    <input type="submit" name="Confirm">
-</form>
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title"> Are you sure you want to delete "{{item}}"?</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <a href="{% url 'dashboard' %}"> Cancel</a>
+            <input type="submit" class="btn btn-danger" value="Delete">
+        </form>
+    </div>
+</div>
 {% endblock %}
