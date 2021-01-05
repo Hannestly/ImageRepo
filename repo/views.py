@@ -4,7 +4,7 @@ from .models import *
 from .forms import ImageForm
 from .classify import classify
 from django.core.files.storage import FileSystemStorage
-from .filters import DetailFilter, CombinedFilter
+from .filters import ImageFilter
 
 # Create your views here.
 def home(request):
@@ -18,16 +18,13 @@ def home(request):
         get = request.GET.copy()
         get['tag_filter'] = classification
         request.GET = get
-    detailFilter = DetailFilter(request.GET,queryset=images)
-    combinedFilter = CombinedFilter(request.GET,queryset=images)
+    imageFilter = ImageFilter(request.GET,queryset=images)
     
-    images = detailFilter.qs
-    images = combinedFilter.qs
+    images = imageFilter.qs
 
     context = {
         'images':images,
-        'detailFilter':detailFilter,
-        'combinedFilter':combinedFilter
+        'imageFilter':imageFilter,
     }
     return render(request,'repo/dashboard.html', context= context)
 
