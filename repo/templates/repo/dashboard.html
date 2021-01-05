@@ -2,24 +2,37 @@
 {% load static %}
 {% block content %}
 <br>
-<div>
+<div class="container">
     <h2>Search by Text</h2>
     <br>
     <form method="get">
-            <label for="{{myFilter.form.title_filter.id_for_label}}" >Title</label>
-            {{myFilter.form.title_filter}}
+            <label for="{{combinedFilter.form.combine_filter.id_for_label}}" >Search</label>
+            {{combinedFilter.form.combine_filter}}
             
-            <label for="{{myFilter.form.title_filter.tag_filter}}">Tag</label>
-            {{myFilter.form.tag_filter}}
-            
-            <label for="{{myFilter.form.desc_filter.tag_filter}}">Description</label>
-            {{myFilter.form.desc_filter}}
             <button class="btn btn-primary" type="submit">Search</button>
     </form>
 </div>
 <hr>
 
-<div>
+
+<div class="container">
+    <h2>Detailed Search</h2>
+    <br>
+    <form method="get">
+            <label for="{{detailFilter.form.title_filter.id_for_label}}" >Title</label>
+            {{detailFilter.form.title_filter}}
+            
+            <label for="{{detailFilter.form.title_filter.tag_filter}}">Tag</label>
+            {{detailFilter.form.tag_filter}}
+            
+            <label for="{{detailFilter.form.desc_filter.tag_filter}}">Description</label>
+            {{detailFilter.form.desc_filter}}
+            <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+</div>
+<hr>
+
+<div class="container">
     <h2>Search by Image</h2>
     <br>
     <form action="" method="POST" enctype="multipart/form-data">
@@ -31,25 +44,31 @@
 
 <hr>
 
-<div class="card-deck">
-    {% for image in images %}
-    <div class="card">
-        <img class="card-img-top" src="{{ image.img_url }}" width='200' height='200' alt="image">
-        <div class="card-body">
-            <h3 class="card-title">{{image.title}}</h3>
-            <h5 class="card-text">{{image.tag}}</h5>
-            <p class="card-text">{{image.description}}</p>
+<div class="container">
+    <div class="card-deck">
+
+        {% for image in images %}
+        <div class="card" style="width:100">
+            <div style="background:url({{image.img_url}});background-position:center; background-repeat: no-repeat; height: 200; width: 100%;"></div>
+            <!-- number of cards in column -->
+            <div class="card-body">
+                <h3 class="card-title">{{image.title}}</h3>
+                <h5 class="card-text">{{image.tag}}</h5>
+                <p class="card-text">{{image.description}}</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">{{image.date_created}}</small>
+            </div>
+            <hr>
+            <a href="{% url 'delete_image' image.id %}" class="btn btn-danger">Delete</a>
         </div>
-        <div class="card-footer">
-            <small class="text-muted">{{image.date_created}}</small>
-        </div>
-        <hr>
-        <a href="{% url 'delete_image' image.id %}" class="btn btn-danger">Delete</a>
-    </div>
+        {% if forloop.counter|divisibleby:"4" %}
+    </div><div class="card-deck">
+    {% endif %} 
     {% empty %}
     <h1>No Result</h1>
     {% endfor %}
+    </div>
 </div>
-
   
 {% endblock %}
