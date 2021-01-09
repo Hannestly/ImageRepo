@@ -35,5 +35,5 @@ When uploading image, the repository system automatically assigns a tag based on
 ## Dataset used
 The classification model was created using Fruit-360 dataset, an open-source dataset available on Kaggle (https://www.kaggle.com/moltean/fruits). The dataset was modified to classify between 12 different classes: 'Apple', 'Apricot', 'Avocado', 'Banana', 'Blueberry', 'Cherry', 'Kiwi', 'Lemon', 'Peach', 'Plum', 'Raspberry', 'Tomato'.   
 To test out the classification yourself, there exists a folder containing test images under ```test_images``` folder. 
-![test images]()
+![test images](https://github.com/Hannestly/ImageRepo/blob/master/screenshots/test_images.png)
 
