@@ -31,10 +31,10 @@ Images can be searched in 3 ways:
 ![search via image](https://github.com/Hannestly/ImageRepo/blob/master/screenshots/search_via_image.png)
 
 ### Automatic tag generation
-When uploading image, the repository system automatically assigns a tag based on the image uploaded using Tensorflow
-![uploading new image - tomaotoes](https://github.com/Hannestly/ImageRepo/blob/master/screenshots/upload_tomatoes.png)
-Image upload requires title and description of the image 
-![uploaded image - tomatoes](https://github.com/Hannestly/ImageRepo/blob/master/screenshots/tomatoes_uploaded.png)
+When uploading image, the repository system automatically assigns a tag based on the image uploaded using Tensorflow        
+![uploading new image - tomaotoes](https://github.com/Hannestly/ImageRepo/blob/master/screenshots/upload_tomatoes.png)  
+Image upload requires title and description of the image        
+![uploaded image - tomatoes](https://github.com/Hannestly/ImageRepo/blob/master/screenshots/tomatoes_uploaded.png)      
 When the upload is complete, the image is classified and tag is created. Time of upload is also saved 
 
 ## Dataset used
