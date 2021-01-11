@@ -10,6 +10,7 @@ Image repository to upload the image, classify the image and view the images sto
 - Tensorflow
 
 ## Instructions to run
+Following project was created with Django. Following steps assumes you have Python 3 installed. 
 1. Install dependencies by running the following command in the cloned repository   
 ```pip install -r requirements.txt```
 2. Run the Django server using the following command    
@@ -31,6 +32,10 @@ Images can be searched in 3 ways:
 
 ### Automatic tag generation
 When uploading image, the repository system automatically assigns a tag based on the image uploaded using Tensorflow
+![uploading new image - tomaotoes]()
+Image upload requires title and description of the image 
+![uploaded image - tomatoes]()
+When the upload is complete, the image is classified and tag is created. Time of upload is also saved 
 
 ## Dataset used
 The classification model was created using Fruit-360 dataset, an open-source dataset available on Kaggle (https://www.kaggle.com/moltean/fruits). The dataset was modified to classify between 12 different classes: 'Apple', 'Apricot', 'Avocado', 'Banana', 'Blueberry', 'Cherry', 'Kiwi', 'Lemon', 'Peach', 'Plum', 'Raspberry', 'Tomato'.   
