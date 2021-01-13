@@ -4,6 +4,9 @@ Image repository to upload the image, classify the image and view the images sto
 
 ![main page](https://github.com/Hannestly/ImageRepo/blob/master/screenshots/dashboard.png)
 
+## Youtube demonstration video
+https://youtu.be/Hsz7PpVO6M8
+
 ## Tools used:
 - Django 
 - SQL
